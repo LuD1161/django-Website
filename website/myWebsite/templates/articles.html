@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Articles Demo</title>
+</head>
+<body>
+{% for article in articles %}
+</body>
+<div>
+    <a href="/articles/get/{{ article.id }}/">{{ article.title }}</a></h2>
+    <p>{{ article.body }}</p>
+</div>
+{{ endfor }}
+</html>

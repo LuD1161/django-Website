@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset=utf-8>
+    {% include "scripts.html" %}
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" media="screen">
+  <link href="{% static 'assets/css/login.css' %}" rel="stylesheet" type="text/css" />
+
+  <script>
+  function showForm(){
+    $("#registration").slideDown("slow", function(){
+      $("#signInForm").slideUp("slow");
+    });}
+  function showLoginForm(){
+    $("#signInForm").slideDown("slow", function(){
+      $("#registration").slideUp("slow");
+    });}
+  </script>
+</head>
+<body>
+  <div class="signin-form">
+    <div class="container">
+      <div id="signInForm" >
+        <form class="form-signin" method="post" id="login-form">
+            {% csrf_token %}
+         <h2 class="form-signin-heading text-center"><strong>Log In</strong> </h2><hr />
+
+         <div id="error_login">
+         <!-- error will be shown here ! -->
+         </div>
+
+         <div class="form-group input-group">
+         <span class="input-group-addon" >
+           <span class="glyphicon glyphicon-envelope"></span>
+         </span>
+         <input type="email" class="form-control" placeholder="Email address" name="user_email" id="user_email" />
+         <span id="check-e"></span>
+         </div>
+
+         <div class="form-group input-group">
+         <span class="input-group-addon">
+           <span class="glyphicon glyphicon-lock"></span>
+         </span>
+         <input type="password" class="form-control" placeholder="Password" name="password" id="password" />
+         </div>
+
+       <hr />
+           <div class="form-group">
+           <button type="submit" class="btn btn-primary" name="btn-login" id="btn-login">
+           <span class="glyphicon glyphicon-log-in"></span> &nbsp; Sign In
+           </button>
+
+           <button type="button" onclick="showForm();" class="btn btn-primary pull-right" name="btn-registration" id="btn-registration">
+           <span class="glyphicon glyphicon-user"></span> &nbsp; Register
+           </button>
+       </div>
+       </form>
+      </div>
+
+      <div id="registration" style="display:none;">
+        <form class="form-signin" method="post" id="registration-form" action="/login/">
+
+         <h2 class="form-signin-heading text-center">Register </h2><hr />
+
+         <div id="error_reg">
+             {% for field in form %}
+                {{ field.errors }}
+             {% endfor %}
+         <!-- error will be shown here ! -->
+         </div>
+         <div class="form-group input-group">
+         <span class="input-group-addon">
+           <span class="glyphicon glyphicon-user"></span>
+         </span>
+         <input type="text" class="form-control" placeholder="Full Name" name="{{ form.user_name }}" id="name" />
+         </div>
+
+         <div class="form-group input-group">
+         <span class="input-group-addon">
+           <span class="glyphicon glyphicon-envelope"></span>
+         </span>
+         <input type="email" class="form-control" placeholder="Email address" name="{{ form.user_email.html_name }}" id="user_email" />
+         <span id="check-e"></span>
+         </div>
+
+         <div class="form-group input-group">
+         <span class="input-group-addon">
+           <span class="glyphicon glyphicon-lock"></span>
+         </span>
+         <input type="password" class="form-control" placeholder="Password" name="{{ form.user_password.html_name }}" id="password_id" />
+         </div>
+
+         <div class="form-group input-group">
+         <span class="input-group-addon">
+           <span class="glyphicon glyphicon-lock"></span>
+         </span>
+         <input type="password" class="form-control" placeholder="Confirm Password" name="cpassword" id="cpassword_id" />
+         </div>
+
+         <div class="form-group input-group">
+         <span class="input-group-addon">
+           <span class="glyphicon glyphicon-calendar"></span>
+         </span>
+         <input type="date" class="form-control" name="{{ form.user_dob.html_name }}" id="dob" />
+         </div>
+
+         <div class="form-group">
+         <label for="country" class="control-label" ></label>
+         <select id="country" name="{{ form.user_country.html_name }}" class="form-control">
+           <option value="IND">India</option>
+           <option value="USA">United States</option>
+           <option value="UK">United Kingdom</option>
+           <option value="GER">Germany</option>
+           <option value="JPN">Japan</option>
+           <option value="CHN">China</option>
+           <option value="PAK">Pakistan</option>
+         </select>
+         </div>
+         <div class="form-group">
+           <label for="gender" style="color:black;" id="gender">Gender : </label>
+                {{ form.user_gender.0 }}{{ form.user_gender.1 }}{{ form.user_gender.2 }}
+         </div>
+         <div class="text-center">
+           <button type="button" onclick="showLoginForm();" class="btn btn-primary cancel" name="btn-back" id="btn-back" >
+           <span class="glyphicon glyphicon-transfer"></span> &nbsp; Back
+           </button>
+           <button type="submit" class="btn btn-primary" name="btn-register" id="btn-register" >
+           <span class="glyphicon glyphicon-user"></span> &nbsp; Register
+           </button>
+         </div>
+         </form>
+      </div>
+    </div>
+
+</div>
+
+</body>
+</html>

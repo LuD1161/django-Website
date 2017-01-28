@@ -5,11 +5,24 @@
     <title>Articles Demo</title>
 </head>
 <body>
+<h2>Language is : {{ language }}</h2>
+<h2>Session Language is : {{ session_language }}</h2>
 {% for article in articles %}
 </body>
 <div>
     <a href="/articles/get/{{ article.id }}/">{{ article.title }}</a></h2>
     <p>{{ article.body }}</p>
 </div>
-{{ endfor }}
+{% endfor %}
+<div>
+    {% if form.errors %}
+        <h4>{{ form.errors }}</h4>
+    {% endif %}
+     <h2>Login</h2>
+  <form method="post" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+  </form>
+</div>
 </html>

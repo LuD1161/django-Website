@@ -1,0 +1,20 @@
+.mainBody{
+  margin-left: 20px;
+  float: left;
+  position: relative;
+  font-weight: bold;
+  height: 100%;
+}
+.sideBar{
+  position: absolute;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin-top: -20px;
+  padding-top: 20px;
+}
+#userBody{
+  transition: 0.5s;
+  height: 100%;
+}

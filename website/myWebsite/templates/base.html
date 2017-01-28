@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Member's Arena</title>
+
+{% include "scripts.html" %}
+
+
+</head>
+<!-- The navbar is here -->
+{% include "navbar.html" %}
+<!--Till Here ;) -->
+<body>
+<div id="userBody">
+
+<div class="container-fluid text-center">
+  <div class="row-content">
+    <div class="col-sm-2 sideBar" >
+    {% if user.user_pic != None %}
+        <img src="{% static "assets/"%}{{ user.user_pic }}"  class="img-circle profileSidebar" style="width:100%;height:100%;"/>
+    {% else %}
+        <img src="{% static "/images/provideAnImage.jpg"%}"  class="img-circle profileSidebar" style="width:100%;height:100%;"/>
+    {% endif %}
+        <h2>
+          {{ user.user_name }}
+        </h2>
+        <p>
+          {% if user.user_about != None  %}
+            {{ user.user_about }}
+          {% else %}
+            About seems to be empty.
+          {% endif %}
+        </p>
+    </div>
+    <div class="col-sm-8 text-left">
+      <div id="user-alert" class='alert alert-success' style="margin-left:100px;margin-right:100px;text-align:center;">
+        <button class='close' data-dismiss='alert'>&times;</button>
+         <strong>Hello  {{ user.user_name }}</strong>
+          <p><br />
+            Welcome to the members page.
+          </p>
+      </div>
+      <div class="mainBody">
+        <h1 id="headingInside"></h1>
+        <p>
+          Contact   : <i>{{ user.user_email }}</i>
+        </p>
+        <p>
+          Joined On : {{ user.joining_date }}
+        </p>
+      </div>
+
+    </div>
+    <div class="col-sm-2 sideBar">
+      <div class="well">
+        <p>Chat Box Here</p>
+      </div>
+      <div class="well">
+        <p>Chat Box Here</p>
+      </div>
+    </div>
+  </div>
+  <div id="myFriendModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="friendModalTitle">Connection Request Sent</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+<div id="push">
+
+</div>
+<footer class="container-fluid text-center" id="foot" >
+  <p ><span class='glyphicon glyphicon-copyright-mark'></span><strong> Aseem Shrey</strong> </p>
+</footer>
+</html>

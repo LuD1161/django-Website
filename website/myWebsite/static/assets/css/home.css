@@ -1,0 +1,139 @@
+html, body{
+  height:100%;
+}
+body {
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;
+    padding-top: 70px;
+}
+
+#push{
+  padding:10px;
+  height: 40px;
+}
+footer {
+      position:fixed;
+      bottom: 0;
+      width: 100%;
+      height: 40px;
+      background-color: #555;
+      color: white;
+      padding: 10px;
+}
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #313131;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #FFF;
+    display: block;
+    transition: 0.3s
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    text-decoration: none;
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+.userPic{
+   margin-left: 50px ;
+   background-size: 130px 150px !important;
+   background-repeat: no-repeat;
+   background-position: center;
+   width:130px !important;
+   height:150px !important;
+}
+div.userPic{
+  position: relative;
+}
+div.transbox {
+  width: 130px !important;
+  height: 20px !important;
+  opacity: 0.6;
+  background-color: #000;
+  position: absolute;
+  bottom: 0;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+div.transbox a#upload {
+  width: 130px !important;
+  height: 20px !important;
+  font-size: 17px !important;
+  padding: 0 !important;
+  color: #303030 !important;
+  text-decoration: none !important;
+}
+div.transbox a#upload:hover {
+  color: #f1f1f1 !important;
+}
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+.searchRes{
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+    overflow: hidden;
+    border: none;
+    border-radius: 5px;
+    font: normal 16px/1 "Times New Roman", Times, serif;
+    color: rgba(255,255,255,1);
+    text-align: left;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    background: #6b7275;
+    -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+    box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
+}
+.search input[type=text]:focus{
+  background-color: #FFF;
+}
+
+.search input[type=text]{
+  background-color: #D5D5D5 ;
+}
+
+div.a_transbox a {
+  font-size: 17px ;
+  color: #9d9d9d;
+  text-decoration: none;
+}
+div.a_transbox a:hover {
+  color: #000;
+}
+.bottom-align-text {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}

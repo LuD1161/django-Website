@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Account Settings</title>
+{% include "scripts.html" %}
+</head>
+<!-- The navbar is here -->
+{% include "navbar.html" %}
+<!--Till Here ;) -->
+<body>
+    <div id="userBody">
+
+    <div class="container-fluid text-center">
+      <div class="row-content">
+          <div class="col-sm-2 sideBar" >
+            <div class="row">
+                {% if user.user_pic != None %}
+                <div class="img-circle userPic" style="background-image:url({% static "assets/"%}{{ user.user_pic }});margin-left:0px;">
+                {% else %}
+                <div class="img-circle userPic" style="background-image:url({% static "/images/provideAnImage.jpg"%});margin-left:0px;">
+                {% endif %}
+                 <div class="a_transbox bottom-align-text">
+                   <a id="a_upload" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-camera"></span> Upload Photo</a>
+               </div>
+               <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Upload Photo</h4>
+                    </div>
+                    <form action="" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="custom-file">&nbsp;
+                        <input type="file" id="fileToUpload" name="fileToUpload" class="custom-file-input">
+                        <span class="custom-file-control"></span>
+                        <small id="fileHelp" class="form-text text-muted"></small>
+                        </label>
+                        <input type="submit" value="Upload Image" name="submit">
+                      </div>
+                  </form>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+               </div>
+                <h2>
+                  {{ user.user_name }}
+                </h2>
+                <p>
+                  {% if user.user_about != None  %}
+                    {{ user.user_about }}
+                  {% else %}
+                    About seems to be empty.
+                  {% endif %}
+                </p>
+                <hr style="border-color:black;"/>
+                <div class="text-left">
+                    <p>
+                      <strong>Contact   :</strong> <i>{{ user.user_email }}</i>
+                    </p>
+                    <p>
+                      <strong>Joined On :</strong> {{ user.joining_date }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8 text-left">
+          <div class="mainBody">
+                <div class="row row-centered">
+                    <div class="col-sm-12 text-center"><h1 id="headingInside">Account Settings</h1></div>
+                </div>
+            <div class="row row-centered">
+                <div class="col-sm-6">
+                    <form method="post">
+                        <div class="form-group"><label for="f_name">First Name :</label><input type="text" class="form-control" id="f_name" name="f_name" value='{{ user.user_fname }}'></div>
+                        <div class="form-group"><label for="l_name">Last Name :</label><input type="text" class="form-control" id="l_name" name="l_name" value='{{ user.user_lname }}'></div>
+                        <div class="form-group"><label for="a_me">About Me :</label><textarea class="form-control" rows="5" id="a_me" name="a_me">{{ user.user_about }}</textarea></div>
+                        <button type="submit" class="btn btn-primary" name="btn-update">Update Details</button>
+                    </form>
+                </div>
+                    <div class="col-sm-6">
+                        <form method="post">
+                        <div class="form-group"><label for="c_password">Current Password :</label><input type="password" class="form-control" id="c_password" name="c_password"></div>
+                        <div class="form-group"><label for="n_password">New Password :</label><input type="password" class="form-control" id="n_password" name="n_password"></div>
+                        <div class="form-group"><label for="r_password">Retype Password :</label><input type="password" class="form-control" id="r_password" name="r_password"></div>
+                        <button type="submit" class="btn btn-primary" name="btn-update-pass">Change Password</button>
+                        </form>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-2 sideBar">
+          <div class="well">
+            <p>Chat Box Here</p>
+          </div>
+          <div class="well">
+            <p>Chat Box Here</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div id="push">
+
+    </div>
+    <footer class="container-fluid text-center" id="foot" >
+      <p ><span class='glyphicon glyphicon-copyright-mark'></span><strong> Aseem Shrey</strong> </p>
+    </footer>
+</body>
+</html>

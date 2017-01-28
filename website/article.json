@@ -1,0 +1,238 @@
+[
+{
+    "model": "myWebsite.articles",
+    "pk": 1,
+    "fields": {
+        "title": "First Article",
+        "body": "This is the body of First article",
+        "pub_date": "2017-01-21T06:17:31.353Z",
+        "likes": 4,
+        "thumbnail": ""
+    }
+},
+{
+    "model": "myWebsite.articles",
+    "pk": 2,
+    "fields": {
+        "title": "Second Article",
+        "body": "This is the body of Second article",
+        "pub_date": "2017-01-21T06:17:55.776Z",
+        "likes": 31,
+        "thumbnail": ""
+    }
+},
+{
+    "model": "myWebsite.articles",
+    "pk": 3,
+    "fields": {
+        "title": "Third Article",
+        "body": "This is the body of Third article",
+        "pub_date": "2017-01-21T06:18:06.393Z",
+        "likes": 12,
+        "thumbnail": ""
+    }
+},
+{
+    "model": "myWebsite.requests",
+    "pk": 1,
+    "fields": {
+        "to_f": 1,
+        "from_f": 2,
+        "status": 0,
+        "date_sent": "2017-01-17T21:04:34Z",
+        "uid": 1,
+        "from_user": "Aniket"
+    }
+},
+{
+    "model": "myWebsite.requests",
+    "pk": 2,
+    "fields": {
+        "to_f": 1,
+        "from_f": 3,
+        "status": 0,
+        "date_sent": "2017-01-17T21:04:18Z",
+        "uid": 1,
+        "from_user": "Crazy"
+    }
+},
+{
+    "model": "myWebsite.requests",
+    "pk": 3,
+    "fields": {
+        "to_f": 1,
+        "from_f": 4,
+        "status": 0,
+        "date_sent": "2017-01-17T21:04:24Z",
+        "uid": 1,
+        "from_user": "Apurva"
+    }
+},
+{
+    "model": "myWebsite.requests",
+    "pk": 4,
+    "fields": {
+        "to_f": 1,
+        "from_f": 5,
+        "status": 0,
+        "date_sent": "2017-01-17T21:04:26Z",
+        "uid": 1,
+        "from_user": "Arun"
+    }
+},
+{
+    "model": "myWebsite.requests",
+    "pk": 5,
+    "fields": {
+        "to_f": 1,
+        "from_f": 6,
+        "status": 0,
+        "date_sent": "2017-01-17T21:04:31Z",
+        "uid": 1,
+        "from_user": "Aniket"
+    }
+},
+{
+    "model": "myWebsite.requests",
+    "pk": 6,
+    "fields": {
+        "to_f": 1,
+        "from_f": 7,
+        "status": 0,
+        "date_sent": "2017-01-17T21:04:29Z",
+        "uid": 1,
+        "from_user": "Abhishek Singhal"
+    }
+},
+{
+    "model": "myWebsite.requests",
+    "pk": 7,
+    "fields": {
+        "to_f": 7,
+        "from_f": 2,
+        "status": 0,
+        "date_sent": "2017-01-17T21:04:28Z",
+        "uid": 1,
+        "from_user": "Aniket"
+    }
+},
+{
+    "model": "myWebsite.users",
+    "pk": 1,
+    "fields": {
+        "user_name": "Aseem Shrey",
+        "user_fname": null,
+        "user_lname": null,
+        "user_email": "aseemshrey@gmail.com",
+        "user_password": "c69874b898abb180ac71bd99bc16f8fb",
+        "joining_date": "2016-12-26T14:35:34Z",
+        "user_dob": null,
+        "user_country": "",
+        "user_gender": "",
+        "user_pic": "../images/1",
+        "user_about": null
+    }
+},
+{
+    "model": "myWebsite.users",
+    "pk": 2,
+    "fields": {
+        "user_name": "Aniket",
+        "user_fname": "Aniket",
+        "user_lname": "",
+        "user_email": "pushpenderyadav145@gmail.com",
+        "user_password": "065eb64f189ab23ff67fa2069e657c02",
+        "joining_date": "2016-12-29T22:40:05Z",
+        "user_dob": null,
+        "user_country": "",
+        "user_gender": "",
+        "user_pic": null,
+        "user_about": "Hi ! This is Aniket And Again ANiket Just to overflow the text"
+    }
+},
+{
+    "model": "myWebsite.users",
+    "pk": 3,
+    "fields": {
+        "user_name": "Crazy",
+        "user_fname": "Crazy",
+        "user_lname": "",
+        "user_email": "crazy@crazy.com",
+        "user_password": "c69874b898abb180ac71bd99bc16f8fb",
+        "joining_date": "2016-12-29T22:39:56Z",
+        "user_dob": null,
+        "user_country": "",
+        "user_gender": "",
+        "user_pic": "../images/3",
+        "user_about": null
+    }
+},
+{
+    "model": "myWebsite.users",
+    "pk": 4,
+    "fields": {
+        "user_name": "Apurva",
+        "user_fname": "Apurva",
+        "user_lname": "Shrey",
+        "user_email": "ashrey@gmail.com",
+        "user_password": "24b0f4a6630d295aeda09878b70a5980",
+        "joining_date": "2016-12-29T23:33:30Z",
+        "user_dob": "1991-08-01",
+        "user_country": "",
+        "user_gender": "",
+        "user_pic": "../images/4",
+        "user_about": null
+    }
+},
+{
+    "model": "myWebsite.users",
+    "pk": 5,
+    "fields": {
+        "user_name": "Arun",
+        "user_fname": "Arun",
+        "user_lname": "Singh",
+        "user_email": "arun_singh_aks@yahoo.co.in",
+        "user_password": "32fb743b679966279696148209bb1465",
+        "joining_date": "2016-12-31T22:39:05Z",
+        "user_dob": "1961-11-08",
+        "user_country": "IND",
+        "user_gender": "M",
+        "user_pic": "../images/5",
+        "user_about": null
+    }
+},
+{
+    "model": "myWebsite.users",
+    "pk": 6,
+    "fields": {
+        "user_name": "Aniket",
+        "user_fname": "Aniket",
+        "user_lname": "",
+        "user_email": "aniket@gmail.com",
+        "user_password": "185e1a3a41e1463e1a60901060bcfefc",
+        "joining_date": "2017-01-06T23:58:47Z",
+        "user_dob": "1993-10-30",
+        "user_country": "IND",
+        "user_gender": "M",
+        "user_pic": "../images/provideAnImage.jpg",
+        "user_about": "Hi ! This is Aniket And Again ANiket Just to overflow the text"
+    }
+},
+{
+    "model": "myWebsite.users",
+    "pk": 7,
+    "fields": {
+        "user_name": "Abhishek Singhal",
+        "user_fname": null,
+        "user_lname": null,
+        "user_email": "abhishek@gmail.com",
+        "user_password": "c798d46a9481ecd436e515a417c150d8",
+        "joining_date": "2017-01-13T20:33:15Z",
+        "user_dob": "1996-02-22",
+        "user_country": "IND",
+        "user_gender": "M",
+        "user_pic": "../images/7",
+        "user_about": null
+    }
+}
+]

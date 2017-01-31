@@ -14,28 +14,7 @@ from django.db import models
 
 
 def get_upload_file_name(instance, filename):
-    return "uploaded_files/%s_%s" % (str(time()).replace('.','_'), filename)
-
-
-class Articles(models.Model):
-    title = models.CharField(max_length=200)
-    body = models.TextField()
-    pub_date = models.DateTimeField()
-    likes = models.IntegerField()
-    thumbnail = models.FileField(upload_to=get_upload_file_name)
-
-    class Meta:
-        verbose_name = 'Articles'
-        verbose_name_plural = 'Articles'
-        managed = True
-        db_table = 'myWebsite_article'
-
-    def __unicode__(self):
-        return self.title
-
-    def __str__(self):
-        return self.title
-
+    return "uploaded_files/%s_%s" % (str(time()).replace('.', '_'), filename)
 
 class Requests(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -58,6 +37,12 @@ class Requests(models.Model):
 
     def __str__(self):
         return u'From : %s ===> To : %s ' % (self.from_user, str(self.to_f))
+
+    def as_dict(self):
+        return {
+            "f_id": self.from_f,
+            "status": self.status,
+        }
 
 
 class Users(models.Model):
@@ -87,3 +72,11 @@ class Users(models.Model):
     def __str__(self):
         return self.name
 
+    def as_dict(self):
+        return {
+            "id": self.user_Id,
+            "Username": self.user_name,
+            "UserPic": self.user_pic,
+            "UserMail": self.user_email,
+            "About": self.user_about,
+        }

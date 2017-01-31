@@ -9,8 +9,11 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.template.loader import get_template
 from django.template import Context
+from django.core.files.storage import FileSystemStorage
+from django.views.decorators.csrf import csrf_exempt
 
-from .models import Articles, Users, Requests
+from django.conf import settings
+from .models import Users, Requests
 from .forms import RegistrationForm, TestForm
 from django.contrib.auth import authenticate, login as django_login, logout
 from django.contrib.auth.models import User
@@ -19,45 +22,30 @@ logger = logging.getLogger('myWebsiteLogHandler')
 logger.setLevel(logging.INFO)
 
 
-def articles(request):
-    lang = 'en-in'
-    session_language = 'en-in'
-
-    if 'lang' in request.COOKIES:
-        lang = request.COOKIES['lang']
-
-    if 'lang' in request.session:
-        session_language = request.session['lang']
-
-    return render_to_response('articles.html',
-                              {'articles': Articles.objects.all(),
-                               'language': lang,
-                               'session_language': session_language})
-
-
-def article(request, article_id=1):
-    return render_to_response('article.html',
-                              {'article': Articles.objects.get(id=article_id)})
-
-
-def language(request, lang='en-in'):
-    response = HttpResponse("setting language to %s" % lang)
-    response.set_cookie('lang', lang)
-    request.session['lang'] = lang
-    return response
+@login_required
+@csrf_exempt
+def uploadUserPic(request):
+    if request.method == 'POST' and request.FILES['myfile']:
+        myfile = request.FILES['myfile']
+        loc = settings.STATIC_ROOT+"/images/"
+        fs = FileSystemStorage(location=loc, base_url=loc)
+        filename = fs.save(myfile.name, myfile)
+        # uploaded_file_url = fs.url(filename)
+        Users.objects.filter(user_email=request.user.email).update(user_pic=""+filename)
+        return HttpResponseRedirect(request.META['HTTP_REFERER'])
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 @login_required
 def user(request, uid=1):
+    profile = getProfile(request.user.email)
     return render_to_response('base.html',
-                              {'user': Users.objects.get(user_id=uid)})
+                              {'user': profile, 'visitor': Users.objects.get(user_id=uid)})
 
 
 @login_required
 def accountsettings(request):
-    logger.info(request.user)
-    profile = Users.objects.get(user_email=request.user.email)
-    logger.info(profile.user_gender)
+    profile = getProfile(request.user.email)
     return render_to_response('accountsettings.html',
                               {'user': profile})
 
@@ -106,7 +94,7 @@ def findfriends(request):
 def frequest(request):
     if request.method == 'POST':
         friend_id = request.POST.get('friend_1')
-        profile = Users.objects.get(user_email=request.user.email)
+        profile = getProfile(request.user.email)
         friend_name = Users.objects.get(user_id=friend_id).user_name
         friend_req = Requests(to_f=profile.user_id, from_f=friend_id, uid=friend_id, status=0,
                               date_sent=datetime.now(), from_user=friend_name)
@@ -119,7 +107,7 @@ def frequest(request):
 @login_required
 def notifications(request):
     notifs = []
-    profile = Users.objects.get(user_email=request.user.email)
+    profile = getProfile(request.user.email)
     logger.info(request.user.email)
     req = Requests.objects.filter(to_f=profile.user_id, status=0)
     for name in req:
@@ -134,7 +122,7 @@ def notifications(request):
 @login_required
 def connect(request, method, user_id):
     result = ''
-    profile = Users.objects.get(user_email=request.user.email)
+    profile = getProfile(request.user.email)
     if method == 'accept':
         result = Requests.objects.filter(to_f=profile.user_id, from_f=user_id).update(status=1)
     elif method == 'block':
@@ -145,6 +133,21 @@ def connect(request, method, user_id):
         result = Requests.objects.filter(to_f=profile.user_id, from_f=user_id).update(status=4)
 
     return HttpResponse(result)
+
+
+def Connections(request):
+    data = []
+    profile = getProfile(request.user.email)
+    friends = Requests.objects.filter(to_f=profile.user_id, status=1)
+    for friend in friends:
+        q = Users.objects.extra(where=['user_id=%s'], params=[str(friend.from_f)])
+        data.append(q.only("user_id", "user_fname", "user_lname", "user_pic", "user_about"))
+    return render(request, 'base.html', {'friends': data, 'user': profile})
+
+
+# Auxiliary Functions
+def getProfile(email):
+    return Users.objects.get(user_email=email)
 
 
 # Not needed

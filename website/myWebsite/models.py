@@ -16,6 +16,7 @@ from django.db import models
 def get_upload_file_name(instance, filename):
     return "uploaded_files/%s_%s" % (str(time()).replace('.', '_'), filename)
 
+
 class Requests(models.Model):
     id = models.IntegerField(primary_key=True)
     to_f = models.IntegerField()

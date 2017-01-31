@@ -54,8 +54,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'website.urls'
 AUTH_PROFILE_MODULE = 'myWebsite.Users'
-LOGIN_URL = '/myWebsite'
-LOGIN_REDIRECT_URL = '/myWebsite'
+LOGIN_URL = '/myWebsite/'
+LOGIN_REDIRECT_URL = '/myWebsite/'
 
 
 TEMPLATES = [
@@ -129,8 +129,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'myWebsite/media')
-MEDIA_URL  = ''
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'myWebsite/media')
+# MEDIA_URL  = ''
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/

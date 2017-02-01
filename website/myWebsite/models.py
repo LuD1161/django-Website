@@ -47,7 +47,7 @@ class Requests(models.Model):
 
 
 class Users(models.Model):
-    user = models.OneToOneField(User, related_name='user')
+    user = models.OneToOneField(User, related_name='profile')
     user_Id = models.BigAutoField(primary_key=True)
     user_name = models.CharField(max_length=25)
     user_fname = models.CharField(max_length=40, blank=True, null=True)
@@ -71,7 +71,7 @@ class Users(models.Model):
         return self.user_name
 
     def __str__(self):
-        return self.name
+        return self.user_name
 
     def as_dict(self):
         return {
@@ -81,3 +81,25 @@ class Users(models.Model):
             "UserMail": self.user_email,
             "About": self.user_about,
         }
+
+
+class Messages(models.Model):
+    message_id = models.IntegerField(primary_key=True)
+    to_f = models.IntegerField()
+    from_f = models.IntegerField()
+    status = models.CharField(max_length=30)
+    date_sent = models.DateTimeField(blank=True, null=True)
+    from_user = models.CharField(max_length=50, blank=True, null=True)
+    message = models.TextField()
+
+    class Meta:
+        verbose_name = 'Messages'
+        verbose_name_plural = 'Messages'
+        db_table = 'messages'
+        unique_together = (('to_f', 'from_f'),)
+
+    def __unicode__(self):
+        return self.from_user
+
+    def __str__(self):
+        return u'From : %s ===> To : %s ' % (self.from_user, str(self.to_f))

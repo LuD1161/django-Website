@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block mainBody %}
+    {% if friends %}
+    <div class="row">
+        {% for queryset in friends %}
+            <div class="col-sm-3 col-lg-3">
+                {% for friend in queryset %}
+                <a href=/myWebsite/user/{{ friend.user_id }}><div class='card hovercard'>
+                    <div class='card-background'>
+                        <img class='card-bkimg' alt="{{ friend.user_fname }} {{ friend.user_lname }}" src="/static/assets/{{ friend.user_pic }}" />
+                    </div>
+                    <div class='useravatar'>
+                        <img src="/static/images/{{ friend.user_pic }}" alt="{{ friend.user_fname }} {{ friend.user_lname }}" />
+                    </div>
+                    <div class='card-info'>
+                        <span class='card-title'>{{ friend.user_fname }} {{ friend.user_lname }}</span></div>
+                </div></a>
+                <div class='well'>
+                    <div class='tab-content'>
+                    <div class='tab-pane fade in active' id='tab1'>
+                        <h3>About</h3><p id='userAbout' title="{{ friend.user_about }}">{{ friend.user_about }}</p><p id='userMail' title="{{ friend.user_email }}">{{ friend.user_email }}</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+    {% endfor %}
+    {% endfor %}
+    </div>
+{% endif %}
+{% endblock %}
+

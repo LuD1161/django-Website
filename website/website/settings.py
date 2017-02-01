@@ -16,7 +16,6 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
@@ -27,7 +26,6 @@ SECRET_KEY = '24b(=i=4&w2d$o=42ig4!u^+z=rp#sq*+e==4phnmgw7j6@#-w'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -57,11 +55,10 @@ AUTH_PROFILE_MODULE = 'myWebsite.Users'
 LOGIN_URL = '/myWebsite/'
 LOGIN_REDIRECT_URL = '/myWebsite/'
 
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'myWebsite/templates/')],
+        'DIRS': [os.path.join(BASE_DIR, 'myWebsite/templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,7 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'website.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
@@ -85,11 +81,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'webregistration',
         'USER': 'iProject',
-        'PASSWORD':'12345',
-        'PORT':'',
+        'PASSWORD': '12345',
+        'PORT': '',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -110,8 +105,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-        'django.contrib.auth.backends.ModelBackend',
-    )
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 # AUTH_USER_MODEL = 'myWebsite.Users'
 # AUTHENTICATION_BACKENDS = ['myWebsite.backends.UserAuthBackend', ]

@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^notifications$', views.notifications, name='notifications'),
     url(r'^uploadUserPic$', views.uploadUserPic, name='uploadUserPic'),
     url(r'^Connections$', views.Connections, name='Connections'),
+    url(r'^messages$', views.messages, name='messages'),
     url(r'^connect/(?P<method>\w+)=(?P<user_id>\d+)$', views.connect, name='connect'),
 
 
